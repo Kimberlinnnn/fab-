@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8" />
+<title>Tabla de Meses</title>
+<style>
+body {
+    background: linear-gradient(to bottom,#832c2c,#9e0229,#640303); 
+    margin: 0;
+    min-height: 250vh;
+    overflow-y: auto;
+}
+
+#base {
+    width: 800px;
+    background-color: rgba(63, 0, 0, 0.212);
+    box-shadow: 10px 10px 60px rgba(199, 178, 110, 0.948);
+    transition: 0.3s;
+    margin: 60px auto;
+    margin-top: 100px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 20px;
+}
+#base:hover{
+    box-shadow: 10px 10px 60px rgba(112, 196, 73, 0.948);
+
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    border: 1px solid black;
+    padding: 10px;
+    text-align: center;
+}
+
+th {
+    background-color: #f2f2f2a1;
+}
+
+.year {
+    background-color: #d9d9d9;
+    font-weight: bold;
+}
+
+td {
+    margin: 5px;
+}
+
+#enero, #febrero, #marzo, #abril, #mayo, #junio, #julio, #agosto, #septiembre, #octubre, #noviembre, #diciembre, 
+#enero2, #febrero2, #marzo2, #abril2, #mayo2, #junio2 {
+    color: aliceblue;
+    font-size: 18px;
+    letter-spacing: 1px;
+    width: 45px;
+    height: 30px;
+    text-align: center;
+    justify-content: center;
+    border-radius: 10px;
+    margin: 5px;
+    position: relative;
+}
+
+#enero:hover, #febrero:hover, #marzo:hover, #abril:hover, #mayo:hover, #junio:hover, #julio:hover, #agosto:hover, 
+#septiembre:hover, #octubre:hover, #noviembre:hover, #diciembre:hover, 
+#enero2:hover, #febrero2:hover, #marzo2:hover, #abril2:hover, #mayo2:hover, #junio2:hover {
+    color: aqua;
+    transition: 0.5s;
+    font-size: 30px;
+    cursor: pointer;
+}
+
+#ano {
+    color: rgb(255, 199, 130);
+    font-size: 24px;
+    margin-left: 260px;
+}
+
+#cale {
+    letter-spacing: 2px;
+}
+
+#eneroT, #febreroT, #marzoT, #abrilT, #mayoT, #junioT, #julioT, #agostoT, #septiembreT, #octubreT, #noviembreT, #diciembreT, 
+#enero2T, #febrero2T, #marzo2T, #abril2T, #mayo2T, #junio2T {
+    width: 900px;
+    height: auto;
+    border-radius: 40px;
+    background-color: rgba(225, 207, 92, 0.716);
+    position: absolute;
+    top: 500px;
+    margin-left: 400px;
+    transform: translateX(-50%);
+    box-shadow: 1px 10px 40px rgba(0, 0, 0, 0.948);
+    display: none;
+    z-index: 9999;
+    padding: 20px;
+    color: white;
+}
+#musica{
+    width: 560px;
+     height: 315px;
+    background-color: #1b070c;   
+    box-shadow: 1px 10px 40px rgba(0, 0, 0, 0.948);
+
+    margin-left: auto;
+    margin-right: auto;
+    display: none;
+}
+
+
+
+#titu {
+    letter-spacing: 2px;
+    text-align: center;
+    color: black;
+}
+
+.fecha {
+    visibility: hidden;
+    width: 100px;
+    background-color: rgb(23, 46, 23);
+    font-size: 20px;
+    color: #ffcc89;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px;
+    position: absolute;
+    z-index: 1;
+    bottom: 125%;
+    left: 50%;
+    margin-left: -60px;
+    opacity: 0;
+    transition: opacity 0.2s;
+}
+
+
+
+
+#enero:hover .fecha, #febrero:hover .fecha, #marzo:hover .fecha, #abril:hover .fecha, #mayo:hover .fecha,
+#junio:hover .fecha, #julio:hover .fecha, #agosto:hover .fecha, #septiembre:hover .fecha, #octubre:hover .fecha, 
+#noviembre:hover .fecha, #diciembre:hover .fecha, #enero2:hover .fecha, #febrero2:hover .fecha, #marzo2:hover .fecha, 
+#abril2:hover .fecha, #mayo2:hover .fecha, #junio2:hover .fecha {
+    visibility: visible;
+    opacity: 1;
+}
+#circulo{
+    color: aqua;
+    border-radius: 50%;
+    width: 10px;
+    height: 10px;
+    z-index: 3;
+}
+#mus{
+    color: rgb(243, 24, 24);
+    letter-spacing: 6px;
+
+}
+
+.musi:hover{
+cursor: pointer;
+border-radius: 50%;
+}
+.enero:hover, .febrero:hover, .marzo:hover, .abril:hover, .mayo:hover, .junio:hover, .julio:hover,.agosto:hover, .septiembre:hover, .octubre:hover,.diciembre:hover, .musi:hover{
+    background-color: #f2f2f2a1;
+    border-radius: 60px;
+}
+#circulo1{
+    box-shadow: 1px 10px 40px rgba(0, 0, 0, 0.948);
+
+    border-radius: 50%;
+    margin-top: auto;
+    width: 370px;
+    height: 370px;
+    z-index: -1;
+    background: linear-gradient(to bottom,#550116,#9e0229,#a04b4b); 
+    position: absolute;
+    animation: mover1 3s infinite alternate;
+}
+#circulo2{
+    background: linear-gradient(to bottom,#550116,#9e0229,#a04b4b); 
+    width: 370px;
+    height: 370px;  
+    border-radius: 50%;
+    box-shadow: 1px 10px 40px rgba(0, 0, 0, 0.948);
+    margin-left: 900px;
+    margin-top: -200px;
+    z-index: -1;
+    position: absolute;
+    animation: mover2 2.5s infinite alternate;
+}
+@keyframes mover1 {
+    0%{ transform: translateX(0px);}
+    100%{transform: translateX(50px);}
+}
+
+@keyframes mover2 {
+    0%{transform: translateX(0);}
+    100%{transform: translateX(-60px);}
+}
+
+</style>
+
+
+
+
+
+
+
+</head>
+<body>
+    <div id="circulo1"></div>
+  
+<div id="base"> 
+    <div id="eneroT">
+        <h1 id="titu">ENERO</h1>
+        <p>Hola, cielo. Te vengo a responder el texto de mi cumpleañosAKJWDWAKJD, todo por orden en los mesecitos y la broma.</p><br>
+        <p>Como en enero no tuvimos nada de contacto, aquí solo te digo que eres lo más especial que tengo, eres lo escencial en mi día a día. Te doy muchísimas gracias por todas las cosas que has hecho por mí, de pana, por este mes y algunos días que estuviste yendo cada día al liceo para verme y estar conmigo. Me has hecho literalmente cada día y me di cuenta de que jamás me podría cansar de ti.</p><br>
+    
+    </div> 
+    <div id="febreroT">
+        <h1 id="titu">FEBRERO</h1>
+        <p>Cierto, todo empezó hace ya 528 días (escribo esta parte el 18/07, ojo), básicamente 1 año y 4 meses. Vergación, qué increíble, help.</p><br>
+            <p>Sí, fue una de mis mejores decisiones, la verdad. No me imagino qué sería de nosotros y menos de mí justo ahorita. Ese "holaaa" ha traído tantas cosas desde el mismo día que se envió, que increíble, me acuerdo que desde ahí fue misterio, que estuve desde ese primer mensaje intentando descubrir quién erasKJSJKAJ y tú vacilando conmigo.</p>
+            <p>Sí, loco, los momentos que hablaba del clima como la propia gafa y tú, de marico también, que me seguías.</p>
+    </div>
+    <div id="marzoT">
+        <h1 id="titu">MARZO</h1>
+        <p>En marzo no hay mucho que decir, fue cuando aún no había ni un toque de confianza. Solo hablábamos de mariqueras como el par de vírgenes raritos, aquí no me acuerdo si ya te había visto o no, q es lo más probable.</p>
+    </div>
+    <div id="abrilT">
+        <h1 id="titu">ABRIL</h1>
+        <p>Abril, igual que marzo pero con más avance. Ya nuestras conversaciones eran más constantes, obviamente. No me acuerdo si a ese tiempo seguíamos hablando del climaDAKJDAMS y obvio que esa súper táctica de no despedirse para seguir hablando el día siguiente no la supera literalmente nadie JDBWHEKD Me acuerdo perfectico que cuando nos despedíamos y ninguno había mandado el primer mensaje, yo subía estados de memes a propósito para que me los respondieras, y cuando no lo hacías, los borraba al toque y me ponía a buscar otro. SKHAKIGVD</p>
+    </div>
+    <div id="mayoT">
+        <h1 id="titu">MAYO</h1>
+        <p>Ya para mayo estábamos mucho mejor, sí. Es increíble como nuestra confianza se fue creando, no como una decisión, sino que fue apareciendo. Literalmente, se fue creando y creciendo por sí sola.</p>
+        <p>Esas buenísimas noches de ludo obvio tampoco se olvidan. Me acuerdo como todo solo andábamos pendientes de joder al otro pero era lo que le daba el toque de pana (te odio más, sucio).</p>
+        <p>Dios, y sí, me acuerdo perfectico que tu regalo para mí en mi cumpleaños fueron donificaciones en ludo que vinieron después con eternas sacadas en cara, equisde.</p>
+    </div>
+    <div id="junioT">
+        <h1 id="titu">JUNIO</h1>
+        <p>Obvio, para junio empezó más la profundidad. Sí, concuerdo total, no teníamos aún <strong>ESA</strong> confianza, pero en junio fue cuando tuvimos <i>ese</i> comienzo.</p>
+        <p>Seguíamos con nuestras eternas noches de ludo y plato, obvio, y nuestras charlas diarias que nunca faltaron, y creo que para ese entonces ya eran un poco más constantes.</p>
+        <p>Me acuerdo perfectico que para esos días, en mi día del examen de matemáticas, di unas cuantas vueltas por el liceo a ver si te veía pa' que me ignorases y yo igual, obvio.</p>
+        <p>Nuestro lenguaje de amor que nadie entendería.</p>
+    </div>
+    <div id="julioT">
+        <h1 id="titu">JULIO</h1>
+        <p>Para julio, por supuesto, ya estábamos activísimos, noches imparables hasta las 4 o 5 de la mañana, sí, nuestro amigo plato siempre de fiel, obvio, fue tambien cuando nos empezamos a conocer mejor en esas noches y profundizar más con el otro hablando de nuestras comidas favoritas, músicas, etc.</p>
+        <p>Y sí, de unas tales labias buenísimas que llegaron para eso de los finales de julio, comienzo de agosto.</p>
+    </div>
+    <div id="agostoT">
+        <h1 id="titu">AGOSTO</h1>
+        <p>Upa, agosto.</p>
+            <p>No hay mucho que decir de agosto, porque seguíamos igual que en julio, que fue en lo que se basaron nuestras vacaciones con el otro, literalmente, noches hasta las 5 o 4 de la mañana jugando a las preguntas, a plato, ludo, etc.</p>
+            <p>También en agosto fue el primer destacado que tuve en WhatsApp, y justo después que mandaste ese mensaje, yo supe perfectamente por dónde íbamos a caer.</p>
+            <p>Dios, que bonito de pana, como amo esos momentos que tuvimos, disfruté cada segundo de cada noche nunca pienses que fueron noches equis para mi porque los tengo guardados como un recuerdo divino. Amé con todo mi corazón conocerte y pasar tanto tiempo hablando contigo, yo supe en esas noches de desvelo, de conocerte, de profundizar contigo, yo supe que te ibas a volver alguien especial para mi(terminaste siendo más que eso) yo estaba súper confundida porque sabía que un sentimiento por ti estaba creciendo pero no sabía el qué o por qué.</p>
+    </div>
+    <div id="septiembreT">
+        <h1 id="titu">SEPTIEMBRE</h1>
+        <p>Septiembre empezamos clases y ahí, que todo empezó, loquísimo hermano.</p>
+         <p>Empezamos los dos como los pares de mongólicos a ignorarnos todo el día y pasábamos toda la noche en los fines de semana hablando KAJHALK.</p>
+        <p>Me acuerdo que yo iba a buscarte por ahí solo para ignorarte KAJAKSJKASJ para estas fechas ya me gustabas. Una vez que entraste a mi mente y nunca más saliste.</p>
+    </div>
+    <div id="octubreT">
+        <h1 id="titu">OCTUBRE</h1>
+        <p>Octubre se basa literalmente en puras ignoradas en los pasillos, contacto visual super rarito, creo que fue cuando nos dimos puñito primera vez.</p>
+    </div>
+    <div id="noviembreT">
+        <h1 id="titu">NOVIEMBRE</h1>
+        <p>
+            Continuación de Agosto.
+        </p>
+    </div>
+    <div id="diciembreT">
+        <h1 id="titu">DICIEMBRE</h1> 
+        <p>Uy, diciembre.</p>
+        <p>2 de diciembre, sí, cuando me metí por aprender chino, que brutal KAJSHJAKAJSH, y es que era obvio pues, que te diga que te quiero decir algo en una fecha de esas era más que obvio, y es que era obvio que no ibas a necesitar ir ni al traductor KJSBLJCBKDSH. Yo te lo juro que fue súper loco, fue así mismo como lo dices, yo no estaba así de tantanatantanatanatan nerviosa pero sí estaba emocionada porque yo sabía que tus sentimientos eran correspondidos (las veces que te vendiste solito). Yo tampoco dejé de leer el chat ALKSNDKSBD fue demasiado brutal, y sí fue algo que nos hizo evolucionar, obviamente, KADJKSJDK. Dios sí, las ignoradas en los pasillos después de eso eran super raras, lo sé AKJSKDBALWKDGBEWJ POR ESO YO BUSQUÉ TU HORARIO DIOSSSSSSSSS, LO BUSQUÉ PARA EVITARTE Y CUANDO TE ENCONTRABA DE LA NADA ME DABA DE TODODJWDÇIOAWHFVGJAWUHFLFIHWE</p>
+        <p>Recuerdo que eso te lo dije porque me estresaba que estuviéramos así de separados cuando los dos nos gustábamos, ¿sabes?, que ni un hola físicamente y me daba rabia JKSDKASJ. Íbamos a pasar otro año más sin hablarnos y aun sabiendo de los sentimientos existentes, te lo dije porque quería más contigo, y Dios, la rabia mía el 7 KJLAKSLDNADJ AAAAAAAAAA. Dios, me dio tanta rabia que después de eso te digo pa' vernos en tal intervalo y me dices que no puedes porque ibas a estar en el bar con tus amigos, y ok, KSJNKAJSK pero me acuerdo que cuando me dijiste eso, le dije a Alessandro que me acompañara a dar una vuelta abajo pa' buscarte KLAJSALKJSDJA. Dios, es que me dio tanta rabia eso, que iba a bajar solo pa' tal pue', y bue', cuando salgo del salón AJKJSKAJ, ¿quién estaba dando vueltas en mi mismo piso cuando dijo que no podía? Nanana, es que es increíble, te odio, y na', ya después de eso ya te dije que fue lo que pensé AKJKJDAKDCNFLWEFBKWRBFJHREG4TRITR te odio.</p>
+        <p>13 de diciembre, Dios santo, yo también me acuerdo porque ese día tuve test de AC y tuve que poner toda mi fuerza posible para poder concentrarme <i>"Ese día es tan sagrado e imposible que se nos olvide algún día de pana, por más seco e incómodo que pueda haber parecido, disfruté cada segundo de él por lo especial que era"</i>, ahí concuerdo mil y una vez contigo, jurao. Ese día creo que me iba a dar de todo, no sabía cómo iba a salir o qué iba a pasar, santoaishdlaui la ansiedad, y obviamente no dejé de detallarte JSKHAKA la primera vez que te tuve a mi lado así como tal, no lo pude evitar que se hace, Dios, todo fue tan brutal, la charla tan equisde, tú mirándome como un bicho, la despedida tan virgen, los randoms de tu salón en una esquina viéndonos y yo no podía dejar de sonreír porque me daba risa y estaba emocionada LKSJKAJS. Me acuerdo también y Dios, mira nada más la diferencia del 13/12/23 al 27/06/24 KSKAJND. Dios, fue el último día nuestro del 023 pero <i>"nos propusimos que el 2024 sería nuestro año y así lo ha sido hasta ahora gracias a Dios"</i>, esto es tan real, loco, <i>"comenzamos seriamente con el horario y todo eso, aumentando nuestra confianza de a poquito. Una gran enorme cantidad de momentos y emociones inolvidables que pienso llevar conmigo el resto de mi vida"</i>, y definitivamente, de pana, como desde entonces todo se ha formado y crecido tan bien, con una base sólida, tanto nuestro amor por el otro como la confianza, siempre se escucha que lo que rápido se hace rápido se acaba, pero lo nuestro es literalmente todo lo contrario.</p>
+
+        <p>13 de Diciembre, Dioj santo, yo también me acuerdo pq ese día tuve teste de AC y tuve que poner toda mi fuerza posible para poder concentrame <i>"Ese día es tan sagrado e imposible que se nos olvide algún día de pana, por más seco e incómodo que pueda haber parecido, disfruté cada segundo de él por lo especial que era"</i> ahí concuerdo mil y una vez contigo, jurao. Ese día creo que me iba a dar de todo, no sabía como iba a salir o que iba a pasar, santoaishdlaui la ansiedad, y obviamente no dejé de detallarte JSKHAKA la primera vez que te tuve a mi lado así como tal, no lo pude evitar qsehace, Dios todo fue tan brutal, la charla tan equisde, tú mirandome como un bicho, la despedida tan virgen, los randons de tu salón en una esquina viendonos y yo no podía dejar de sonreír pq me daba risa y estaba emocionada LKSJKAJS. Me acuerdo tambien y Dios mira nada más la diferencia del 13/12/23 al 27/06/24 KSKAJND DIOKSOSOIOSIOI.</p>
+        <p>Y sí, fue el  ultimo día nuestro del 023 pero <i>", nos propusimos que el 2024 sería nuestro año y así lo ha sido hasta ahora gracias a Dios"</i> esto es tan real, loco, <i>"comenzamos seriamente con el horario y todo eso, aumentando nuestra confianza de a poquito. Una gran enorme cantidad de momentos y emociones INOLVIDABLES que pienso llevar conmigo el resto de mi vida"</i> y definivamente, de pana, como desde entonces todo se ha formado y crecido tan bien, con una base solida, tanto nuestro amor por el otro como la confianza, siempre se escucha que lo que rápido se hace rápido se acaba, pero lo nuestro es literalmente todo lo contrario</p>
+    </div>
+    <div id="enero2T">
+        <h1 id="titu">ENERO</h1>
+        <p>Enerororiroioio, fue el comienzo definitivo de todo, Dios. Desde el primer día de enero que nos volvimos a ver hasta ahora, cada segundo ha valido la pena.</p>
+            <p><i>"De enero no recuerdo mucho más allá de las veces que tu mamá nos vio"</i>, la verdad yo tampoco, pero sé que fueron las primeras quedadas en las ventanas y luego nos fuimos acercando hasta quedar siempre detrás de la biblioteca JKAKJKASJ.</p>
+            <p>Me acuerdo que esas quedadas fueron silenciosas y siempre me preocupaba porque yo te aburriera o porque no te gustara quedar conmigoKSAJXBGASGCDSKJ.</p>
+
+    </div>
+    <div id="febrero2T">
+        <h1 id="titu">FEBRERO</h1>
+        <p>FEBRErOOOOOOOOOOOO</p>
+        <p>Cumplimos nuestro bello primer año el 6, donde le doy gracias a Diosito por ti de pana. Me ha bendecido totalmente al ponerme a ti en mi vida, Él supo que me faltaba algo y nada, me mandó a poner ese dm/fts para poder tenerlo todo. Èl me vio y dijo ese día "te voy a dar loq ue necesitas"</p>
+            <p><i>"Ese día 2 tan inolvidable"</i>, donde literalmente ambos vimos las estrellas. Más de acuerdo imposible AJKSJAKSJAK Dios, estuve pensando en eso todo el día. Llegué a la clase super tarde y coloradísima. Dios, el recuerdo de ese momento es lo más lindo e inocente, fue como un beso del kinder, piquito y salir corriendo colorada KAJSKJAK.</p>
+            <p><i>"No aguantaste ni 30 días (fueron 27) y ya querías evolucionar al de encaje (lo admito, también estaba ansioso yo🤭🙈🙈)."</i> Yo sabía que tú estabas ansioso, y nada, sabía que no me ibas a decir nada así que me tocó.</p>
+            <p>Ese día también estuve pensando si te había gustado como me gustó a mí, fue divino también.</p>
+            <p><i>"Después ese día 14 tan especial"</i>. Sí, me alegró muchísimo que te haya hecho sentir así. De pana, no sabes lo mucho que me alegró saber que te había gustado. Yo cada hora que lo estuve haciendo, disfruté cada momento y pensé en ti en cada momento y queriendo hacerte sentir lo que eres para mí. También estaba re nerviosa por eso porque no sabía si era lo suficiente o si te fuera a gustar o te parecería cringe o demasiado cursi SDHK,BCJF,SD por eso me alegró muchisimo saber que te había gustado, sabes?</p>
+            <p><i>"Ganarte y hacerte la persona más feliz que pueda existir, o al menos intentarlo😔😔"</i>. El equisde del tamaño de Rusia, intentarlo????????????????????????????? Lo haces sin intentarlo y más que eso.</p>
+            <p>27 jantisimo <i>"te dije que lo haríamos y así fue, si el 2 vimos las estrellas el 28 vimos el espacio entero entonces"</i> más literal imposible.</p>
+            <p><i>"Aparte de ese inolvidable 29 de enero"</i>, divino ese día de panita. Obvio que mi objetivo principal siempre fue marcar territorio. Siempre recordaré lo bonito que se sintió ver que usabas la colita, y después vi que subiste una foto al estado y Dios, cómo me emocioné al ver la colita en tu muñeca. Me emocioné tanto que les enseñé la foto a los muchachos diciendo que tal, usabas mi colita.</p>
+
+
+    </div>
+    <div id="marzo2T">
+        <h1 id="titu">MARZO</h1>
+        <p><i>"2 Pasamos a Marzo, Dios, Marzo hermana, lo recuerdas? Esos viernes de ai"</i> cómo no me voy a acordar. Sí, fueron los más especiales y amorosos, estar esas tardes juntos y abrazados en silencio fue lo mejor de panita.</p>
+            <p><i>"Donde nos dio por usar la lengua por primera vez (lo mejor)"</i> de pana KAJSKASJKASJ.</p>
+            <p><i>"Con alta cantidad de espectadores también equisde, pagas karaokes y ni avisas😡😡."</i> Era una sorpresita que te quise dar :(</p>
+            <p>pero de pana que esos momentos fueron tan lindo y especiales, fue cuando me di cuenta de comodo que era estar contigo, de tenerte abrazandote o al contrario, solamente sentados abrazaditos sin nada más era tan satisfactorio y ahí me di cuenta de eso, sabes? supe lo lindo que se sentía tu compañía. Hoy en día me acuerdo de eso y es uno de nuestros recuerdos tan lindos, sabes? fue como ese momento de darme cuenta lo mucho que te quería conmigo por ese sentimiento tan divino que tengo cuando estoy contigo, esa tranquilidad y ese sentimiento tan bonito de orgullo de tener a un gran hombre como tú.</p>
+    </div>
+    <div id="abril2T">
+        <h1 id="titu">ABRIL</h1>
+        <p><i>"La parte de potencia entre nosotros, porque fue donde más evolucionamos los besos, toques y todo eso literalmente"</i> Dios, sí. Después de tantas quedadas, después de esos viernes, después de esos besos, en la semana del agrupamiento dimos un súper paso ese martes en la tarde que fueron nuestros primeros toques donde vimos literalmente el cielo por primera vez durante 10 minutos AJSAKJSKAJS, cuando dimos <i>ese</i> avance. Luego salimos todos colorados y los profes caminando hacia nosotros. Súper random.</p>
+            <p><i>"Súper importante el grupo sano que logramos armar JAJSJAJDJSJFJ, ese día del agrupamiento fue el que acabó por cambiar todo literal y de verdad que no sabes lo feliz que me hace poder estar haciendo todo sin pena ni nada de eso, de panita"</i> De pana, eso también nos ayudó tanto, no tener límite en nada literalmente.</p>
+    </div>
+    <div id="mayo2T">
+        <h1 id="titu">MAYO</h1>
+        <p><i>"Llevo bastante tiempo planeando escribirte esto y de verdad quiero que sepas que lo hice con el corazón en mis manos, si hay alguien que merece leer todo esto eres tú sin dudas😔❤️. "</i> Te amo muchísimo mi vida, te doy gracias por absolutamente todo mi vida, por abrirte conmigo y expresarme todos tus sentimientos que para mí valen oro.</p>
+            <p>Ese día lo amé con todas mis fuerzas. Ese 13 pasarlo contigo fue tan divino, Dios. Como te amo de pana, cada cosa que me dijiste, cada cosa que me diste, absolutamente cada segundo de esa tarde queda en mi corazón hasta que me muera y más allá. El hecho de solo pasarlo contigo a mi lado riendo, hablando y haciéndome sentir tan especial y feliz ya lo hacía divino. Todo lo que hiciste para darme esos regalos, absolutamente todo queda en mi corazón y estoy segura que nadie en este mundo me va a hacer sentir como me sentí ese día. Dios, no podía dejar de sonreír. Ese día llegué sintiéndome medio mal y nada, después que llegaste en el almuerzo se me quitaron todos los males, definitivamente. Yo me acuerdo como ese día dije "tiene que ser él por que sí" y vi de verdad que era sentirlo todo, vi como se siente ser la mujer más rica del mundo sin dinero. No tienes ni la menor idea de lo bonito que me hiciste. </p>
+            <p>Voy a estar agradecida contigo durante toda la vida por lo que has hecho y por lo bien que me has hecho durante este tiempo. Eres y seguirás siendo el hombre por el que jamás dudaré en darlo todo.</p>
+    </div>
+    <div id="junio2T">
+        <h1 id="titu">JUNIO</h1>
+        <p>JUNIOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO Dios, tremendo mes, loco (especialmente el 25 y 27 *risa timida*)
+
+        </p>
+        <p><i>"cada noche que pasamos, cada "pelea" JAJSKAJDJS, cada discusión, cada risa, cada beso, CADA BESO INVERTIDO JAJAJSKAJDKAJSJAJAJAJAJAJSKAJSJAJSJAJSJ😵‍💫🙈😻🙏🏿🙏🏿, cada abrazo, cada piquito, cada palabra que nos decimos, TODO, de verdad, todo, todo lo que haces me hace sentir más que suficiente"</i>Yo lo sé mi vida, de pana, absolutamente cada cosa que te relacione ha sido una de las mejores cosas, absolutamente cada cosa que te relacione me hace sentir de maravilla, como amo tu risa, como amo tus besos, como amo tu voz, amo que me abraces, que me ladilles, adoro con todo el corazón tus <i>te amos</i> son lo más satisfactorio para mi corazón porque ahí sé que ya lo tengo todo, no eres solo tú el más afortunado porque desde el 6 de febrero del 2023 Dios me dijo <i>"Te bendigo"</i>, me siento de maravilla al saber que hoy  en día soy la <i>" eres literal la persona en la que más confío, la que me da sus opiniones, con la que hablo cada día sin sentir UN SOLO átomo de aburrimiento, eres lo máximo, en serio, eres mi novia, mi hermana, mi futura esposa, mi compañera, mi mano derecha, MI MEJOR AMIGAAAAA, eres simplemente todo lo que tenga que ver con mi felicidad"</i>tú también eres absolutamente todo eso para mí y más, eres mi apoyo, mi compañero, mi felicidad, mis ojos, mi real, mi mejor amigo, mi futuro esposo, y estoy superfeliz y satisfecha con saber que eres el hombre con quien pasaré mi vida porque de verdad que no puedo pedir más, ya eres mi felicidad, ya me haces sentir la más amada, especial y feliz que exista en este planeta y nunca lo dudes y me alegro como no tienes idea que también seas feliz conmigo porque de verdad que es lo mínimo que podría hacer <i>"cada tiktok, cada reel que te envío es en serio, pienso hacer todo lo que te mando estando a tu lado"</i> absolutamente todo se nos va a dar mivida, todo se nos cumplirá, es literalmente como dices, dijimos que este año iba a ser nuestro y así fue, ahora decimos que esta vida será nuestra, el futuro será nuestro y así también será. 
+             <i>"Si mi futuro no es contigo, simplemente no quiero a nadie más" </i>yo tampoco de pana, tampoco me veo con nadie más, en todo lo que pienso a futuro te veo es a ti conmigo, yo también siempre estaré contigo y para ti, sea donde sea que paremos el día de mañana, y sé que tu lealtad está conmigo, y te juro que la mía también está y estará contigo no pienso jugármela así con nadie más <i>"Cuéntame cada cosa que te pase que jamás me aburriré de escucharte, ok? (ya empecé a llorar aquí AJJAJJSKKSJRKWKFKSJFJD😭😭😭)"</i>yo lo sé, mi cielo, cada cosa siempre pienso en ti como primero para saberlo (literalmente yo, hermano, estoy supersensible)<i> "Pienso ver tu sonrisa por muchos años más, así sea por foto, no pienso perder el contacto contigo, cuéntame cómo te va en la universidad, todo, de verdad, hagamos llamadas largas, no sé, no perdamos la unión y confianza por favor, solo te pido eso😔."</i> Yo también pienso ver la tuya muchsiisisjisisiiisisissmos años más, micielo, y jamás perderemos esto que tenemos, así no sea como novios, mientras nos esperamos, pero nuestra unión siempre y toda la vida, también siempre seré tu mejor amiga y cuando me necesites, el tiempo que sea, el año que sea y donde estemos, yo siempre estaré, también tienes mi palabra y la tendrás</p>
+            <p>Los celos que dices también me demostraron lo mucho que te importo y lo que te preocupa, pero no quiero que sientas esa preocupación que dices, a mí no me vas a perder  y muchísimo menos por algún loquito, absolutamente nadie va a conseguir llegar al nivel tuyo en mí, olvídate disso miloco, yo por ti tambien estoy totalmente perdida y dudo que alguien me encuentre ASJDAJKS, tú también eres el que me hace totalmente feliz, el que me hizo experimentar tantas emociones nuevas, que me deja pensando en un futuro contigo, contigo tambien consegui tener lo que cualquier mujer promedio, también siento que soy la envidia de cualquiera, depanista.</p>
+            <p> Tú también eres el dueño de mis ojos, mi niño bello, guapo, divino, hermoso, precioso, buenísimos, eres el dueño de cada una de mis emociones y el que tiene el poder serio de dejarme en las ruinas, eres mi primer todo (casi) y quiero que seas el último⁣. </p>
+            <p><i>"cada elogio que me haces, lo lindo, hermoso, divino, guapo, buenísimo y perfecto que me ves me hace sentir más seguro de mí mismo y de panita que logras subirme la autoestima."</i> No sabes lo que me alegro tanto que te haga sentir así, porque a ti también te agradezco tanto por hacerme sentir tantas veces mejor, por hacerme sentir segura conmigo misma y por siempre darme tus mejores palabras para que me sienta bien conmigo propia, te amo muchísimo y te agradezco tanto todo lo que haces porque todo tú tienes tanta influencia en mí que todo lo que haces me ayuda como no tienes idea</p>
+            <p>Sigamos así toda la vida, de la manera en que vamos, siempre resolviendo todo e intentando sobre todo entender al otro, que la empatía, comunicación y respeto nunca falten mi cielo. Nada va a hacer que dejemos de sentir lo de ahora, estar online creó todo JSKAJSJS y online lo mantendrá hasta que estemos juntos otra ve, <i>"quiero serlo todo para ti así como tú lo eres todo para mí"</i> créeme que lo eres todo para mí y más, mivida, no lo dudes jamás y espero nunca dejar de ser tu todo</p>
+            <br><strong> PA TERMINAR, </strong><br>
+            p>Han pasado unos 6 meses desde que empezamos todo y no puedo sentir la mayor felicidad posible por todo lo que ha pasado, estoy tan agradecida contigo por absolutamente todo lo que has hecho por mí, por lo nuestro, yo jamás me arrepentiré por esto que hemos creado y por las pocas cosas que he conseguido hacer por ti, te agradezco tanto por hacerme sentir tan especial y amada, porque gracias a ti tuvimos este fuerte avance en tus vacaciones, por ti doy lo que está en mis manos darte y perdóname si es poco, si tuviera más lo daría todo y más, pero créeme que no dejaré de hacer las cosas por ti porque siempre voy a sentir la mayor satisfacción del mundo al darte algo o al hacerte sentir brutal. Puede que te haga cosas pginasdibujitosefaltaraclasesyvisitasdeestudioetcetc, pero es que nunca voy a sentir que sea suficiente por todas esas cosas que has hecho por mí./p>
+            <p>Eres el amor de mivida, para mí eres aquello que cualquier persona quisiera, vivo contigo la meta de muchos, literalmente eres para mí y tengo ahora el señor de mucho y le doy tantas gracias a Dios por eso, deseo tanto que absolutamente nada nos haga cambiar eso ni ahora ni nunca, y yo sé que tú sientes lo mismo, yo sé que para ti es igual, y por eso sé que todo se nos va a dar como queremos.</p>
+            <p>junio ha sido tantanatantanatanatan brutal depana, que nos ha dejado tantos sentimientos por el otro.</p>
+            <p>Llegamos aquí (junio) con muchsiisisjisisiiisisissmos recuerdos divinos de nosotros, amé <strong>ABSOLUTAMENTE</strong> todo, pero el absolutamente tiene que estar en mayúsculas y en negrito, amote con todo mi corazón micielohermsososwoidhçweoflbwkerhbfgfxo yifb te odio.</p>
+            <p>25 ASDFGHJKMNBVCDE45TGHU Dios me acuerdo de que no dejé de pensar en aquella situación, fue tan divino primero estar en la biblioteca de la escuela volviendo a nuestras viejas andanzas, para luego pasarnos a la biblioteca municipal pa las nuevas AKSJAKSDios loco, que nos sentáramos, nos comenzáramos a besar y ahí me lances tú arriba, Akljshlsdfhbkvfubrurebf, la primera venidalcodwociexdw demasiado tremendo todo, de pana, después quedarnos abrazados un ratico, esa mitad del día que pasamos juntos también fue demasiado tremendo, bonita y potente ASJSHASHD Y LO QUE ME DA RISA ES QUE DESPUÉS DE ESAS SITUACIONES SE ME ACABA LITERALMENTE TODA LA ENERGÍA  ÇJDENWLEHWEK ME DA DEMASIADO SUEÑOOOOOOOOOOOOOOO</p>
+            <p>Dios, loco, ese 27 como lo amé, absolutamente cada segundo, amé estar todo mi día contigo y no me imagino como sería estar toda una vida, amé tanto estar sentaditos los dos en la mañana hablando sobre nuestro futuro, sobre cuando y como nos vamos a casar, cuantos hijos tendremos y donde vivirémos BDASHEJVASMDHWBVC DIOS FUE TAN LINDO, almorzar contigo mientras hablamos, y luego del tremendo beso que no duró ni 3 minutos, pero divino SDHSJH tanto que me mandó al baño equisde, luego de eso acostarnos abrazaditos y quitarnos cada que venía un carro AKJSKAH, Dios, luego que te dije pa bajar que nos acostamos abajo, chacho, la entrada al paraíso AJKSHKABH, un beso de literalmente 20 minutos con hasta ruedas en el piso, demasiado potente, loco, amé mucho ese momento contigo depanita (y estar debajo y encimadeti 🙈) se sintió todo tan sincero y fuerte,,,,,,,, luego de eso irnos a las destacadas a hablar y recordar los bonitos momentos que tuvimos donde cada uno sigue y seguirá en mi corazón, cada palabra, cada labia, absolutamente todo. Recuerdo también ese sentimiento tan rarito con el que llegué a mi casa, ese sentimiento de saber que ya no te voy a ver todos los días acostado esperándome, saber que no te besaré hasta volvernos a ver que sabrá Dios cuando será, porque hay literalmente una línea superdelgada entre besarte este año otra a vez a besarte en mínimo unos 6 años, pero pase lo que pase voy a extrañarte muchisismo así sea en estas vacaciones o en esos años de distancia.</p>
+            <p>Te doy muchsiisisjisisiiisisissmas gracias por hacerme vivir todas esas cosas, de pana, por ser tan rarito, por ser tan cariñoso, por demostrarme todo tu fuerte e intenso amor, por darme vueltas raritas, por besarme toda la cara y no querer soltarme, por fastidiarme tanto hasta que me haces querer arrancarte la cabeza, por esperarme cada minuto del día, por esos detalles, por siempre estar presente como amigo, novio y compañero, por cada risa y toda esa felicidad que me has sacado, por esas tardes que nos quedamos hablando riendo</p>
+            <p>Amé con todo mi corazón estar contigo, besarte yo a ti, apretarte los brazos, masajear y tocar la divina espalda que tienes, ver esos hermosos ojitos que me encantan, abrazarte y sentir esa enorme paz, acostarme contigo en cualquier lado superrarito a ver tiktoks, ir de la mano o jugar contigo, estar abrazaditos sentados, tenerte en mis brazos es la cosa más divina que jamás voy a conseguir describir ese sentimiento o estar yo en los tuyos, loco, decirte que si no metes gol eres infiel Y LO PEOR ES QUE PUEDES ESTAR FALLANDO DESDE LA MAÑANA Y TE DIGO ESO Y LA METES, QUE ARRECHO AJSDCH Dios, después de eso decirnos infiel mientras nos besamos, cuando nos escapamos nuestros amigos para irnos atusae LASKHDAJKS, cada momento de <i>acción</i> que tuvimos en ese lugar KJSGDBMWAKDG, cada chalequeo de los profesores, cada <i>hola guap@</i> de cualquiera de los dos, loco, absolutamente todo lo amo y amé con todo mi corazón y aunque sé que ya nos despedímos, quiero verte otra vez, miloco, quiero tener y estar contigo un tiempo más porque nunca voy a sentir que es suficiente el tiempo contigo, ahorita pido un mes más, pero se acaba y voy a querer más, estoy segura, pero en serio, ahorita siento que necesito ese tiempo, y no sabes lo mucho que me arrepiento de esos pequeños momentos donde no te abracé, donde no te besé, depanista.</p>
+            <p>Te amo como no tienes idea miloco, y deseo tanto que eso que hablamos ese 27 en la mañana se nos cumpla todo, lo deseo y sé que se cumplirá</p>~
+            <p>Vales tanto la pena, mi vida, y no sabes lo agradecida que estoy con Dios, porque esta bendición me haya tocado a mí, porque un gran hombre como tú me haya tocado a mí, </p>
+            <p>Disfruté hacerte mucho esto como cada cosita</p>
+            <p> Te doy otra vez, gracias por absolutamente todo amor de mi vida, créeme que te lo devolveré todo en serio  </p>
+            <p>Te amo con todo mi corazón fabito</p>
+
+ 
+    </div>
+
+    <table>
+        <thead>
+            <tr>
+                <th colspan="5" id="cale">CALENDARIO <i>"respuesta"</i></th>        
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td id="ano" colspan="5">2023</td>
+            </tr>
+            <tr>
+                <td id="enero" onclick="mostrarEneroT()" class="enero">Enero
+                    <span class="fecha">inicio del año</span>
+                    <div id="circulo"></div>
+                </td>
+                <td id="febrero" onclick="mostrarFebreroT()" class="febrero">Febrero
+                    <span class="fecha">6 - el comienzo de todo</span>
+                </td>
+                <td id="marzo" onclick="mostrarMarzoT()">Marzo
+                    <span class="fecha">...</span>
+                </td>
+                <td id="abril" onclick="mostrarAbrilT()">Abril
+                    <span class="fecha">...</span>
+                </td>
+                <td id="mayo" onclick="mostrarMayoT()">Mayo
+                    <span class="fecha">...</span>
+                </td>
+            </tr>
+            <tr>
+                <td id="junio" onclick="mostrarJunioT()" class="junio">Junio
+                    <span class="fecha">Noches lindas</span>
+                </td>
+                <td id="julio" onclick="mostrarJulioT()" class="julio">Julio
+                    <span class="fecha">Noches de juegos</span>
+                </td>
+                <td id="agosto" onclick="mostrarAgostoT()" class="agosto">Agosto
+                    <span class="fecha">Noches de juegos y labias equisde</span>
+                </td>
+                <td id="septiembre" onclick="mostrarSeptiembreT()" class="septiembre">Septiembre
+                    <span class="fecha">18 - Nuestra vuelta</span>
+                </td>
+                <td id="octubre" onclick="mostrarOctubreT()">Octubre
+                    <span class="fecha">...</span>
+
+
+                </td>
+            </tr>
+            <tr>
+                <td id="noviembre" onclick="mostrarNoviembreT()">Noviembre
+                    <span class="fecha">...</span>
+                </td>
+                <td id="diciembre" onclick="mostrarDiciembreT()" class="diciembre">Diciembre
+                    <span class="fecha"> 2 - palabras chinas <br> 13 - primer encuentro
+                    </span>
+                </td>
+                <td>..</td>
+                <td>..</td>
+                <td>..</td>
+            </tr>
+            <tr>
+                <td id="ano" colspan="5">2024</td>
+            </tr>
+            <tr>
+                <td id="enero2" onclick="mostrarEnero2T()" class="enero">Enero
+                </td>
+                <td id="febrero2" onclick="mostrarFebrero2T()" class="febrero">Febrero
+
+                    <span class="fecha">2 - primer beso <br> 6 - año de amistad <br> 14 - primer regalo <br> 28 - Día del encaje <br>29 - (marca de territorio)robo de colita</span>
+                </td>
+                <td id="marzo2" onclick="mostrarMarzo2T()" class="marzo">Marzo
+                    <span class="fecha">15 - Tarde de AI <br>22 - tarde de AI y serenatas buhoneras</span>
+                </td>
+                <td id="abril2" onclick="mostrarAbril2T()" class="abril">Abril
+                    <span class="fecha">16- primer buen martes   </span>
+                </td>
+                <td id="mayo2" onclick="mostrarMayo2T()" class="mayo">Mayo
+                    <span class="fecha"> 13- mi cumpleaños</span>
+                </td>
+            </tr>
+            <tr>
+                <td id="junio2" onclick="mostrarJunio2T()" class="junio">Junio
+                    <span class="fecha">25 - beso extra potente <br>27 - nuestro ultimo día tan potente <br> 2 - record de noche (5:45)</span>
+                </td>
+          
+                <td colspan="4" onclick= "mostrarMusica()" id="mus" style="background-color: rgb(44, 1, 1);" class="musi">MUSIQUITA</td>
+                
+            </tr>
+        </tbody>
+    </table>
+</div>
+  <div id="circulo2"></div>
+<div id="musica" style="display: none;"><iframe width="560" height="315" src="https://www.youtube.com/embed/ktzv-itVl2E?si=HS94AOrEkaiIVwon" 
+    title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+    referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>
+
+
+<script>
+
+function mostrarEneroT() {
+    var divEneroT = document.getElementById("eneroT");
+    if (divEneroT.style.display === "none" || divEneroT.style.display === "") {
+        divEneroT.style.display = "block";
+    } else {
+        divEneroT.style.display = "none";
+    }
+}
+
+function mostrarFebreroT() {
+    var divFebreroT = document.getElementById("febreroT");
+    if (divFebreroT.style.display === "none" || divFebreroT.style.display === "") {
+        divFebreroT.style.display = "block";
+    } else {
+        divFebreroT.style.display = "none";
+    }
+}
+
+function mostrarMarzoT() {
+    var divMarzoT = document.getElementById("marzoT");
+    if (divMarzoT.style.display === "none" || divMarzoT.style.display === "") {
+        divMarzoT.style.display = "block";
+    } else {
+        divMarzoT.style.display = "none";
+    }
+}
+
+function mostrarAbrilT() {
+    var divAbrilT = document.getElementById("abrilT");
+    if (divAbrilT.style.display === "none" || divAbrilT.style.display === "") {
+        divAbrilT.style.display = "block";
+    } else {
+        divAbrilT.style.display = "none";
+    }
+}
+
+function mostrarMayoT() {
+    var divMayoT = document.getElementById("mayoT");
+    if (divMayoT.style.display === "none" || divMayoT.style.display === "") {
+        divMayoT.style.display = "block";
+    } else {
+        divMayoT.style.display = "none";
+    }
+}
+
+function mostrarJunioT() {
+    var divJunioT = document.getElementById("junioT");
+    if (divJunioT.style.display === "none" || divJunioT.style.display === "") {
+        divJunioT.style.display = "block";
+    } else {
+        divJunioT.style.display = "none";
+    }
+}
+
+function mostrarJulioT() {
+    var divJulioT = document.getElementById("julioT");
+    if (divJulioT.style.display === "none" || divJulioT.style.display === "") {
+        divJulioT.style.display = "block";
+    } else {
+        divJulioT.style.display = "none";
+    }
+}
+
+function mostrarAgostoT() {
+    var divAgostoT = document.getElementById("agostoT");
+    if (divAgostoT.style.display === "none" || divAgostoT.style.display === "") {
+        divAgostoT.style.display = "block";
+    } else {
+        divAgostoT.style.display = "none";
+    }
+}
+
+function mostrarSeptiembreT() {
+    var divSeptiembreT = document.getElementById("septiembreT");
+    if (divSeptiembreT.style.display === "none" || divSeptiembreT.style.display === "") {
+        divSeptiembreT.style.display = "block";
+    } else {
+        divSeptiembreT.style.display = "none";
+    }
+}
+
+function mostrarOctubreT() {
+    var divOctubreT = document.getElementById("octubreT");
+    if (divOctubreT.style.display === "none" || divOctubreT.style.display === "") {
+        divOctubreT.style.display = "block";
+    } else {
+        divOctubreT.style.display = "none";
+    }
+}
+
+function mostrarNoviembreT() {
+    var divNoviembreT = document.getElementById("noviembreT");
+    if (divNoviembreT.style.display === "none" || divNoviembreT.style.display === "") {
+        divNoviembreT.style.display = "block";
+    } else {
+        divNoviembreT.style.display = "none";
+    }
+}
+
+function mostrarDiciembreT() {
+    var divDiciembreT = document.getElementById("diciembreT");
+    if (divDiciembreT.style.display === "none" || divDiciembreT.style.display === "") {
+        divDiciembreT.style.display = "block";
+    } else {
+        divDiciembreT.style.display = "none";
+    }
+}
+
+function mostrarEnero2T() {
+    var divEnero2T = document.getElementById("enero2T");
+    if (divEnero2T.style.display === "none" || divEnero2T.style.display === "") {
+        divEnero2T.style.display = "block";
+    } else {
+        divEnero2T.style.display = "none";
+    }
+}
+
+function mostrarFebrero2T() {
+    var divFebrero2T = document.getElementById("febrero2T");
+    if (divFebrero2T.style.display === "none" || divFebrero2T.style.display === "") {
+        divFebrero2T.style.display = "block";
+    } else {
+        divFebrero2T.style.display = "none";
+    }
+}
+
+function mostrarMarzo2T() {
+    var divMarzo2T = document.getElementById("marzo2T");
+    if (divMarzo2T.style.display === "none" || divMarzo2T.style.display === "") {
+        divMarzo2T.style.display = "block";
+    } else {
+        divMarzo2T.style.display = "none";
+    }
+}
+
+function mostrarAbril2T() {
+    var divAbril2T = document.getElementById("abril2T");
+    if (divAbril2T.style.display === "none" || divAbril2T.style.display === "") {
+        divAbril2T.style.display = "block";
+    } else {
+        divAbril2T.style.display = "none";
+    }
+}
+
+function mostrarMayo2T() {
+    var divMayo2T = document.getElementById("mayo2T");
+    if (divMayo2T.style.display === "none" || divMayo2T.style.display === "") {
+        divMayo2T.style.display = "block";
+    } else {
+        divMayo2T.style.display = "none";
+    }
+}
+
+function mostrarJunio2T() {
+    var divJunio2T = document.getElementById("junio2T");
+    if (divJunio2T.style.display === "none" || divJunio2T.style.display === "") {
+        divJunio2T.style.display = "block";
+    } else {
+        divJunio2T.style.display = "none";
+    }
+}
+
+function mostrarMusica(){
+    var divmusica = document.getElementById("musica");
+    if(divmusica.style.display === "none" || divmusica.style.display === ""){
+        divmusica.style.display = "block";
+    } else{
+        divmusica.style.display = "none";
+    }
+}
+</script>
+</body>
+</html>
